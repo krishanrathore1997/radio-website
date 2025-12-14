@@ -1,0 +1,2133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Radio 2PIR | Modern Radio Media</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Bootstrap CSS -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.6.0/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Font Awesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Roboto:wght@300;400;500&display=swap" rel="stylesheet">
+    <!-- jQuery & Bootstrap JS (required for modals and components) -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.6.0/js/bootstrap.min.js"></script>
+    <!-- Slick Carousel -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.9.0/slick.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.9.0/slick-theme.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.9.0/slick.min.js"></script>
+    <style>
+        :root {
+            --primary: #1a1a2e;
+            --secondary: #16213e;
+            --accent: #f9a826;
+            --accent-light: #ffd166;
+        }
+        
+        html {
+            scroll-behavior: smooth;
+            scroll-padding-top: 80px;
+        }
+        
+        body {
+            font-family: 'Roboto', sans-serif;
+        }
+        
+        h1, h2, h3, h4, h5, h6 {
+            font-family: 'Inter', sans-serif;
+        }
+        
+        /* Custom scrollbar */
+        ::-webkit-scrollbar {
+            width: 10px;
+        }
+        
+        ::-webkit-scrollbar-track {
+            background: var(--primary);
+        }
+        
+        ::-webkit-scrollbar-thumb {
+            background: var(--accent);
+            border-radius: 5px;
+        }
+        
+        /* Animations */
+@keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+@keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(30px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+@keyframes slideInLeft {
+            from { opacity: 0; transform: translateX(-30px); }
+            to { opacity: 1; transform: translateX(0); }
+        }
+
+@keyframes slideInRight {
+            from { opacity: 0; transform: translateX(30px); }
+            to { opacity: 1; transform: translateX(0); }
+        }
+
+        @keyframes scrollClients {
+            0% { transform: translateX(0); }
+            100% { transform: translateX(-50%); }
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-10px); }
+        }
+
+@keyframes bounceIn {
+            0% { opacity: 0; transform: scale(0.3); }
+            50% { opacity: 1; transform: scale(1.05); }
+            70% { transform: scale(0.9); }
+            100% { opacity: 1; transform: scale(1); }
+        }
+
+@keyframes pulse {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.5; }
+        }
+
+@keyframes scaleIn {
+            from { transform: scale(0); opacity: 0; }
+            to { transform: scale(1); opacity: 1; }
+        }
+
+@keyframes skewIn {
+            from { transform: skewX(-30deg) scaleX(0); opacity: 0; }
+            to { transform: skewX(0) scaleX(1); opacity: 1; }
+        }
+
+        .animate-fadeIn {
+            animation: fadeIn 0.8s ease-out;
+        }
+
+        .animate-fadeInUp {
+            animation: fadeInUp 1s ease-out;
+        }
+
+        .animate-slideInLeft {
+            animation: slideInLeft 1s ease-out;
+        }
+
+        .animate-slideInRight {
+            animation: slideInRight 1s ease-out;
+        }
+
+        .animate-float {
+            animation: float 3s ease-in-out infinite;
+        }
+
+        .animate-bounceIn {
+            animation: bounceIn 1.2s ease-out;
+        }
+
+        .animate-pulse {
+            animation: pulse 2s infinite;
+        }
+
+        .animate-scaleIn {
+            animation: scaleIn 0.8s ease-out;
+        }
+
+        .animate-skewIn {
+            animation: skewIn 0.8s ease-out;
+        }
+
+        /* Staggered animation delays */
+        .stagger-1 { animation-delay: 0.1s; }
+        .stagger-2 { animation-delay: 0.2s; }
+        .stagger-3 { animation-delay: 0.3s; }
+        .stagger-4 { animation-delay: 0.4s; }
+        .stagger-5 { animation-delay: 0.5s; }
+
+        /* Smooth transitions */
+        * {
+            box-sizing: border-box;
+        }
+
+        /* Back to top button */
+        .back-to-top {
+            position: fixed;
+            bottom: 120px;
+            right: 30px;
+            z-index: 50;
+            width: 50px;
+            height: 50px;
+            background: linear-gradient(135deg, #f9a826, #ffd166);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            opacity: 0;
+            transform: translateY(100px);
+            transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+            box-shadow: 0 4px 20px rgba(249, 168, 38, 0.3);
+        }
+
+        .back-to-top.show {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .back-to-top:hover {
+            transform: scale(1.1) translateY(-2px);
+            box-shadow: 0 8px 30px rgba(249, 168, 38, 0.4);
+        }
+
+        /* Loading animation */
+        .loading-spinner {
+            border: 3px solid #f3f3f3;
+            border-top: 3px solid #f9a826;
+            border-radius: 50%;
+            width: 30px;
+            height: 30px;
+            animation: spin 1s linear infinite;
+            margin: 0 auto;
+        }
+
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+        
+        /* Gradient text */
+        .gradient-text {
+            background: linear-gradient(90deg, var(--accent), var(--accent-light));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        
+        /* Radio card hover effect */
+        .radio-card {
+            transition: all 0.3s ease;
+        }
+        
+        .radio-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(249, 168, 38, 0.2);
+        }
+        
+        /* Section backgrounds */
+        .section-alt {
+            background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
+        }
+
+        /* Marquee Animation */
+        @keyframes marqueeScroll {
+            0% {
+                transform: translateX(0%);
+            }
+            100% {
+                transform: translateX(-50%);
+            }
+        }
+
+        .marquee-container {
+            display: flex;
+            white-space: nowrap;
+        }
+
+        .marquee-scroll {
+            animation: marqueeScroll 30s linear infinite;
+        }
+
+        .marquee-scroll:hover {
+            animation-play-state: paused;
+        }
+        
+        /* Audio player custom */
+        audio {
+            filter: sepia(20%) saturate(70%) grayscale(1) contrast(99%) invert(12%);
+        }
+        
+        audio::-webkit-media-controls-panel {
+            background-color: var(--primary);
+        }
+        
+        audio::-webkit-media-controls-play-button {
+            background-color: var(--accent);
+            border-radius: 50%;
+        }
+    </style>
+</head>
+<body class="bg-gray-900 text-white">
+    <!-- Sticky Header & Navigation -->
+    <header id="header" class="fixed top-0 w-full bg-gray-900/95 backdrop-blur-sm z-50 border-b border-gray-800">
+        <div class="container mx-auto px-4 py-3">
+            <div class="flex justify-between items-center">
+                <!-- Logo -->
+                <a href="#home" class="flex items-center space-x-3">
+                    <img src="https://www.radio2pir.com/images/logotop1.png" alt="Radio 2PIR Logo" class="h-10">
+                    <span class="text-2xl font-bold">Radio 2PIR</span>
+                </a>
+
+                <!-- Desktop Navigation -->
+                <nav class="hidden md:flex space-x-6">
+                    <a href="#home" class="hover:text-yellow-400 transition">Home</a>
+                    <a href="#about" class="hover:text-yellow-400 transition">About Us</a>
+                    <a href="#podcasts" class="hover:text-yellow-400 transition">Podcasts</a>
+                    <a href="#services" class="hover:text-yellow-400 transition">Services</a>
+                    <a href="#products" class="hover:text-yellow-400 transition">Products</a>
+                    <a href="#clients" class="hover:text-yellow-400 transition">Clients</a>
+                    <a href="#jockeys" class="hover:text-yellow-400 transition">Jockeys</a>
+                    <a href="#testimonials" class="hover:text-yellow-400 transition">Testimonials</a>
+                    <a href="#contact" class="hover:text-yellow-400 transition">Contact</a>
+                </nav>
+
+                <!-- Mobile Menu Button -->
+                <button id="menuBtn" class="md:hidden text-2xl">
+                    <i class="fas fa-bars"></i>
+                </button>
+            </div>
+            
+            <!-- Mobile Navigation Menu -->
+            <div id="mobileMenu" class="hidden md:hidden mt-4 pb-3">
+                <div class="flex flex-col space-y-3">
+                    <a href="#home" class="py-2 hover:text-yellow-400">Home</a>
+                    <a href="#about" class="py-2 hover:text-yellow-400">About Us</a>
+                    <a href="#podcasts" class="py-2 hover:text-yellow-400">Podcasts</a>
+                    <a href="#services" class="py-2 hover:text-yellow-400">Services</a>
+                    <a href="#products" class="py-2 hover:text-yellow-400">Products</a>
+                    <a href="#clients" class="py-2 hover:text-yellow-400">Clients</a>
+                    <a href="#jockeys" class="py-2 hover:text-yellow-400">Jockeys</a>
+                    <a href="#testimonials" class="py-2 hover:text-yellow-400">Testimonials</a>
+                    <a href="#contact" class="py-2 hover:text-yellow-400">Contact</a>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Sticky Audio Player -->
+    <div id="audioPlayer" class="fixed bottom-0 left-0 right-0 bg-gray-800 border-t border-gray-700 p-3 z-40">
+        <div class="container mx-auto">
+            <div class="flex flex-col md:flex-row items-center justify-between gap-3">
+                <div class="flex items-center space-x-3">
+                    <div class="w-10 h-10 bg-gradient-to-r from-yellow-500 to-yellow-300 rounded-lg flex items-center justify-center">
+                        <i class="fas fa-broadcast-tower text-black"></i>
+                    </div>
+                    <div>
+                        <p class="font-medium" id="currentTrack">Live: Morning Show with RJ Sam</p>
+                        <p class="text-sm text-gray-400">Radio 2PIR • 98.3 FM</p>
+                    </div>
+                </div>
+                
+                <div class="flex items-center space-x-4">
+                    <audio id="mainAudio" controls class="w-full md:w-64">
+                        <source src="https://live.radio2pir.com/chappan" type="audio/mpeg">
+                        Your browser does not support audio element.
+                    </audio>
+                    <button onclick="togglePlay()" class="bg-yellow-500 hover:bg-yellow-400 text-black font-bold px-6 py-2 rounded-lg transition">
+                        <i id="playIcon" class="fas fa-play mr-2"></i> Listen Live
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <main class="pt-16">
+        <!-- 1. FULL PAGE BANNER -->
+        <section id="home" class="min-h-screen flex items-center justify-center relative overflow-hidden">
+            <div class="absolute inset-0 bg-gradient-to-br from-gray-900 via-purple-900 to-gray-900 z-0"></div>
+            <div class="absolute inset-0 opacity-20 z-0" style="background-image: url('https://images.unsplash.com/photo-1598488035139-bdbb2231ce04?auto=format&fit=crop&w=2070'); background-size: cover; background-position: center;"></div>
+            
+            <div class="container mx-auto px-4 relative z-10 text-center animate-fadeIn">
+                <h1 class="text-5xl md:text-7xl font-bold mb-6 leading-tight">
+                    Tune Into <span class="gradient-text">Vibrations</span>
+                </h1>
+                <p class="text-xl md:text-2xl text-gray-300 mb-10 max-w-3xl mx-auto">
+                    India's premier radio experience. Live music, engaging talk shows, and innovative advertising solutions across Gujarat.
+                </p>
+                
+                <div class="flex flex-col sm:flex-row gap-4 justify-center mb-16">
+                    <a href="#contact" class="bg-yellow-500 hover:bg-yellow-400 text-black font-bold py-3 px-8 rounded-lg text-lg transition transform hover:-translate-y-1">
+                        <i class="fas fa-bullhorn mr-2"></i> Advertise With Us
+                    </a>
+                    <a href="#channels" class="bg-transparent border-2 border-yellow-500 text-yellow-500 hover:bg-yellow-500/10 font-bold py-3 px-8 rounded-lg text-lg transition">
+                        <i class="fas fa-headphones mr-2"></i> Explore Channels
+                    </a>
+                </div>
+                
+                <!-- Live Stats -->
+                <div class="grid grid-cols-2 md:grid-cols-4 gap-6 max-w-4xl mx-auto">
+                    <div class="bg-gray-800/50 p-6 rounded-xl">
+                        <div class="text-3xl md:text-4xl font-bold text-yellow-500">98.3</div>
+                        <div class="text-gray-400">FM Frequency</div>
+                    </div>
+                    <div class="bg-gray-800/50 p-6 rounded-xl">
+                        <div class="text-3xl md:text-4xl font-bold text-yellow-500">24/7</div>
+                        <div class="text-gray-400">Live Streaming</div>
+                    </div>
+                    <div class="bg-gray-800/50 p-6 rounded-xl">
+                        <div class="text-3xl md:text-4xl font-bold text-yellow-500">50K+</div>
+                        <div class="text-gray-400">Monthly Listeners</div>
+                    </div>
+                    <div class="bg-gray-800/50 p-6 rounded-xl">
+                        <div class="text-3xl md:text-4xl font-bold text-yellow-500">200+</div>
+                        <div class="text-gray-400">Happy Clients</div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="absolute bottom-10 left-1/2 transform -translate-x-1/2 animate-bounce">
+                <a href="#about"><i class="fas fa-chevron-down text-3xl text-yellow-500"></i></a>
+            </div>
+        </section>
+
+        <!-- 2. ABOUT US -->
+        <section id="about" class="py-20 section-alt">
+            <div class="container mx-auto px-4">
+                <div class="text-center mb-16">
+                    <h2 class="text-4xl font-bold mb-4">About <span class="gradient-text">Radio 2PIR</span></h2>
+                    <p class="text-gray-400 max-w-3xl mx-auto">Leading radio media company providing innovative audio solutions since 2010</p>
+                </div>
+                
+                <div class="grid md:grid-cols-2 gap-12 items-center">
+                    <div>
+                        <h3 class="text-3xl font-bold mb-6">World's First Personalized Radio Station</h3>
+                        <p class="text-gray-300 mb-6">
+                            Radio 2 PI R is World's First Personalized Radio Station. In an era dominated by digital connectivity, our proposal unveils an innovative venture: the establishment of an Internet Radio platform. As traditional radio gives way to the boundless possibilities of online broadcasting, our initiative aims to carve a niche in the dynamic realm of virtual airwaves.
+                        </p>
+                        <p class="text-gray-300 mb-8">
+                            Offering a diverse range of curated content, our Internet Radio promises an immersive auditory experience, seamlessly blending entertainment, information, and community engagement. Embracing the limitless reach of the web, we aspire to redefine radio, fostering a global community united by the power of sound.
+                        </p>
+
+                        <div class="flex flex-wrap gap-4">
+                            <div class="bg-gray-800/50 p-4 rounded-lg">
+                                <i class="fas fa-satellite-dish text-yellow-500 text-2xl mb-2"></i>
+                                <h4 class="font-bold">24/7 Global Reach</h4>
+                                <p class="text-sm text-gray-400">Internet broadcasting worldwide</p>
+                            </div>
+                            <div class="bg-gray-800/50 p-4 rounded-lg">
+                                <i class="fas fa-users text-yellow-500 text-2xl mb-2"></i>
+                                <h4 class="font-bold">Personalized Experience</h4>
+                                <p class="text-sm text-gray-400">Tailored content for listeners</p>
+                            </div>
+                            <div class="bg-gray-800/50 p-4 rounded-lg">
+                                <i class="fas fa-lightbulb text-yellow-500 text-2xl mb-2"></i>
+                                <h4 class="font-bold">Innovation First</h4>
+                                <p class="text-sm text-gray-400">Pioneering internet radio</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="space-y-8">
+                        <div class="relative">
+                            <div class="bg-gradient-to-br from-yellow-500/20 to-purple-500/20 rounded-2xl p-1">
+                                <img src="https://images.unsplash.com/photo-1493225457124-a3eb161ffa5f?auto=format&fit=crop&w=1000&q=80"
+                                     alt="Radio Broadcasting Studio"
+                                     class="rounded-2xl w-full h-auto">
+                            </div>
+                            <div class="absolute -bottom-6 -right-6 bg-gray-900 p-6 rounded-xl shadow-xl max-w-xs">
+                                <div class="text-4xl font-bold text-yellow-500">5+</div>
+                                <div class="text-lg font-bold">Years of Excellence</div>
+                                <div class="text-gray-400 text-sm">In radio broadcasting</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 8. DISPLAY BOARD -->
+        <section id="display-board" class="py-20 section-alt">
+            <div class="container mx-auto px-4">
+                <div class="flex justify-between items-center mb-10">
+                    <h2 class="text-4xl font-bold">
+                        <i class="fas fa-bullhorn text-yellow-500 mr-3"></i>
+                        <span class="gradient-text">Display Board</span>
+                    </h2>
+                    <div class="flex items-center space-x-4">
+                        <div class="bg-yellow-500 text-black px-4 py-1 rounded-full font-bold animate-pulse">
+                            LIVE UPDATES
+                        </div>
+                        <button onclick="refreshBoard()" class="text-gray-400 hover:text-yellow-500">
+                            <i class="fas fa-sync-alt"></i> Refresh
+                        </button>
+                    </div>
+                </div>
+                
+                <!-- Live Ticker -->
+                <div class="bg-gray-800/70 rounded-xl p-4 mb-8 border-l-4 border-yellow-500">
+                    <div class="flex items-center">
+                        <div class="bg-red-500 text-white px-3 py-1 rounded-full font-bold text-sm mr-4">
+                            LIVE
+                        </div>
+                        <div class="overflow-hidden">
+                            <div id="newsTicker" class="marquee-scroll text-xl font-semibold whitespace-nowrap inline-block">
+                                🎤 Special Christmas Live Party at Sabarmati Riverfront on Dec 25 • 🎧 New podcast episode with celebrity chef releasing tomorrow • 📻 Technical upgrade scheduled for 2 AM tonight • 🎁 Holiday special shows all week • 🏆 Radio 2PIR wins Best Community Radio Award 2023 • 📢 New RJ Neha joining our team from January 15nbsp;&nbsp;&nbsp;&nbsp;
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Upcoming Events Grid -->
+                <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+                    <!-- Event 1 -->
+                    <div class="bg-gray-800/50 p-6 rounded-xl radio-card">
+                        <div class="flex justify-between items-start mb-4">
+                            <div>
+                                <div class="text-yellow-500 font-bold">DEC 25 • 8:00 PM</div>
+                                <h3 class="text-xl font-bold mt-1">Christmas Live Party</h3>
+                            </div>
+                            <div class="bg-gray-900 w-12 h-12 rounded-full flex items-center justify-center">
+                                <i class="fas fa-music text-yellow-500"></i>
+                            </div>
+                        </div>
+                        <p class="text-gray-400 mb-6">Live broadcast from Sabarmati Riverfront with special guests, fireworks, and celebrity performances.</p>
+                        <div class="flex items-center justify-between">
+                            <span class="text-sm text-gray-500"><i class="fas fa-map-marker-alt mr-2"></i> Sabarmati Riverfront</span>
+                            <button class="text-yellow-500 hover:text-yellow-400 font-medium">
+                                More Details <i class="fas fa-arrow-right ml-2"></i>
+                            </button>
+                        </div>
+                    </div>
+                    
+                    <!-- Event 2 -->
+                    <div class="bg-gray-800/50 p-6 rounded-xl radio-card">
+                        <div class="flex justify-between items-start mb-4">
+                            <div>
+                                <div class="text-yellow-500 font-bold">TOMORROW • 10:00 AM</div>
+                                <h3 class="text-xl font-bold mt-1">Business Leader Interview</h3>
+                            </div>
+                            <div class="bg-gray-900 w-12 h-12 rounded-full flex items-center justify-center">
+                                <i class="fas fa-microphone text-yellow-500"></i>
+                            </div>
+                        </div>
+                        <p class="text-gray-400 mb-6">Exclusive conversation with leading entrepreneur about startup growth in Gujarat market.</p>
+                        <div class="flex items-center justify-between">
+                            <span class="text-sm text-gray-500"><i class="fas fa-clock mr-2"></i> Live on 98.3 FM</span>
+                            <button class="text-yellow-500 hover:text-yellow-400 font-medium">
+                                Set Reminder <i class="fas fa-bell ml-2"></i>
+                            </button>
+                        </div>
+                    </div>
+                    
+                    <!-- Event 3 -->
+                    <div class="bg-gray-800/50 p-6 rounded-xl radio-card">
+                        <div class="flex justify-between items-start mb-4">
+                            <div>
+                                <div class="text-yellow-500 font-bold">JAN 1 • 12:00 AM</div>
+                                <h3 class="text-xl font-bold mt-1">New Year Countdown</h3>
+                            </div>
+                            <div class="bg-gray-900 w-12 h-12 rounded-full flex items-center justify-center">
+                                <i class="fas fa-glass-cheers text-yellow-500"></i>
+                            </div>
+                        </div>
+                        <p class="text-gray-400 mb-6">Special 4-hour broadcast with music, celebrity guests, and live countdown from multiple locations.</p>
+                        <div class="flex items-center justify-between">
+                            <span class="text-sm text-gray-500"><i class="fas fa-headphones mr-2"></i> Multi-city broadcast</span>
+                            <button class="text-yellow-500 hover:text-yellow-400 font-medium">
+                                Join Celebration <i class="fas fa-calendar-plus ml-2"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Quick Updates -->
+                <div class="mt-12 grid grid-cols-1 md:grid-cols-3 gap-6">
+                    <div class="bg-gray-800/30 p-4 rounded-lg">
+                        <div class="flex items-center">
+                            <div class="bg-yellow-500/20 p-2 rounded-lg mr-3">
+                                <i class="fas fa-tools text-yellow-500"></i>
+                            </div>
+                            <div>
+                                <div class="font-bold">System Upgrade</div>
+                                <div class="text-sm text-gray-400">Dec 20, 2:00 AM - 4:00 AM</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="bg-gray-800/30 p-4 rounded-lg">
+                        <div class="flex items-center">
+                            <div class="bg-yellow-500/20 p-2 rounded-lg mr-3">
+                                <i class="fas fa-user-plus text-yellow-500"></i>
+                            </div>
+                            <div>
+                                <div class="font-bold">New RJ Joining</div>
+                                <div class="text-sm text-gray-400">Meet RJ Neha from Jan 15</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="bg-gray-800/30 p-4 rounded-lg">
+                        <div class="flex items-center">
+                            <div class="bg-yellow-500/20 p-2 rounded-lg mr-3">
+                                <i class="fas fa-trophy text-yellow-500"></i>
+                            </div>
+                            <div>
+                                <div class="font-bold">Award Won</div>
+                                <div class="text-sm text-gray-400">Best Community Radio 2023</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+
+        <!-- 3. PODCASTS -->
+      <section id="podcasts" class="py-20 bg-gray-900">
+  <div class="container mx-auto px-4">
+    <!-- Header -->
+    <div class="flex flex-col md:flex-row justify-between items-start md:items-center mb-12 gap-4">
+      <div>
+        <h2 class="text-4xl font-bold mb-2">
+          Popular <span class="gradient-text">Podcasts</span>
+        </h2>
+        <p class="text-gray-400">
+          Listen to our most engaging shows and special episodes on demand.
+        </p>
+      </div>
+      <a href="podcast/" class="text-yellow-500 hover:text-yellow-400 font-medium flex items-center">
+        View All <i class="fas fa-arrow-right ml-2"></i>
+      </a>
+    </div>
+
+    <!-- Podcast Cards -->
+    <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
+      <!-- Podcast 1 -->
+      <article class="radio-card bg-gray-800 rounded-xl overflow-hidden shadow-lg hover:shadow-2xl hover:-translate-y-1 transition-all duration-300">
+        <div class="relative">
+          <img src="https://www.radio2pir.com/images/world-atheletes-day.png" alt="World Athletes Day"
+               class="w-full h-48 object-cover">
+          <div class="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent"></div>
+          <div class="absolute bottom-3 left-3 flex items-center gap-2">
+            <span class="bg-yellow-500 text-black px-3 py-1 rounded-full text-xs font-bold">
+              Special Episode
+            </span>
+          </div>
+        </div>
+        <div class="p-5 flex flex-col h-full">
+          <h3 class="text-lg font-bold mb-1">World Athletes Day</h3>
+          <p class="text-gray-400 text-sm mb-4">
+            Inspiring stories and conversations with athletes and fitness experts.
+          </p>
+          <div class="mt-auto flex items-center justify-between">
+            <span class="text-yellow-500 text-xs font-medium uppercase">Featured</span>
+            <a href="podcast/podcast1.html"
+               class="bg-gray-700 hover:bg-yellow-500 hover:text-black text-yellow-500 px-4 py-2 rounded-full text-xs font-bold flex items-center gap-2">
+              <i class="fas fa-play text-xs"></i> Listen Now
+            </a>
+          </div>
+        </div>
+      </article>
+
+      <!-- Podcast 2 -->
+      <article class="radio-card bg-gray-800 rounded-xl overflow-hidden shadow-lg hover:shadow-2xl hover:-translate-y-1 transition-all duration-300">
+        <div class="relative">
+          <img src="https://www.radio2pir.com/images/TIWARI.jpg" alt="Podcast Tiwari"
+               class="w-full h-48 object-cover">
+          <div class="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent"></div>
+          <div class="absolute bottom-3 left-3 flex items-center gap-2">
+            <span class="bg-yellow-500 text-black px-3 py-1 rounded-full text-xs font-bold">
+              Talk Show
+            </span>
+          </div>
+        </div>
+        <div class="p-5 flex flex-col h-full">
+          <h3 class="text-lg font-bold mb-1">Tiwari Speaks</h3>
+          <p class="text-gray-400 text-sm mb-4">
+            Candid conversations, real stories and powerful opinions with Tiwari.
+          </p>
+          <div class="mt-auto flex items-center justify-between">
+            <span class="text-yellow-500 text-xs font-medium uppercase">New</span>
+            <a href="podcast/podcast2.html"
+               class="bg-gray-700 hover:bg-yellow-500 hover:text-black text-yellow-500 px-4 py-2 rounded-full text-xs font-bold flex items-center gap-2">
+              <i class="fas fa-play text-xs"></i> Listen Now
+            </a>
+          </div>
+        </div>
+      </article>
+
+      <!-- Podcast 3 -->
+      <article class="radio-card bg-gray-800 rounded-xl overflow-hidden shadow-lg hover:shadow-2xl hover:-translate-y-1 transition-all duration-300">
+        <div class="relative">
+          <img src="https://www.radio2pir.com/images/actingkabhoot.jpg" alt="Acting Ka Bhoot"
+               class="w-full h-48 object-cover">
+          <div class="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent"></div>
+          <div class="absolute bottom-3 left-3 flex items-center gap-2">
+            <span class="bg-yellow-500 text-black px-3 py-1 rounded-full text-xs font-bold">
+              Drama
+            </span>
+          </div>
+        </div>
+        <div class="p-5 flex flex-col h-full">
+          <h3 class="text-lg font-bold mb-1">Acting Ka Bhoot</h3>
+          <p class="text-gray-400 text-sm mb-4">
+            Fun, drama and behind‑the‑scenes stories from the world of acting.
+          </p>
+          <div class="mt-auto flex items-center justify-between">
+            <span class="text-yellow-500 text-xs font-medium uppercase">Popular</span>
+            <a href="podcast/podcast3.html"
+               class="bg-gray-700 hover:bg-yellow-500 hover:text-black text-yellow-500 px-4 py-2 rounded-full text-xs font-bold flex items-center gap-2">
+              <i class="fas fa-play text-xs"></i> Listen Now
+            </a>
+          </div>
+        </div>
+      </article>
+
+      <!-- Podcast 4 -->
+      <article class="radio-card bg-gray-800 rounded-xl overflow-hidden shadow-lg hover:shadow-2xl hover:-translate-y-1 transition-all duration-300">
+        <div class="relative">
+          <img src="https://www.radio2pir.com/images/conjunctivitis.jpg" alt="Health Podcast"
+               class="w-full h-48 object-cover">
+          <div class="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent"></div>
+          <div class="absolute bottom-3 left-3 flex items-center gap-2">
+            <span class="bg-yellow-500 text-black px-3 py-1 rounded-full text-xs font-bold">
+              Health Talk
+            </span>
+          </div>
+        </div>
+        <div class="p-5 flex flex-col h-full">
+          <h3 class="text-lg font-bold mb-1">Health Talk: Conjunctivitis</h3>
+          <p class="text-gray-400 text-sm mb-4">
+            Simple, clear guidance from doctors on eye care and seasonal infections.
+          </p>
+          <div class="mt-auto flex items-center justify-between">
+            <span class="text-yellow-500 text-xs font-medium uppercase">Expert</span>
+            <a href="podcast/podcast4.html"
+               class="bg-gray-700 hover:bg-yellow-500 hover:text-black text-yellow-500 px-4 py-2 rounded-full text-xs font-bold flex items-center gap-2">
+              <i class="fas fa-play text-xs"></i> Listen Now
+            </a>
+          </div>
+        </div>
+      </article>
+    </div>
+
+    <!-- Player (optional, unchanged) -->
+    <div class="mt-12 bg-gray-800 rounded-xl p-6">
+      <div class="flex flex-col md:flex-row items-center justify-between gap-6">
+        <div class="flex items-center space-x-4">
+          <div class="w-20 h-20 bg-gradient-to-r from-yellow-500 to-purple-500 rounded-lg flex items-center justify-center">
+            <i class="fas fa-podcast text-3xl"></i>
+          </div>
+          <div>
+            <h3 class="text-xl font-bold">Now Playing: Morning Masala</h3>
+            <p class="text-gray-400 text-sm">
+              Latest episode from Radio 2pir with special guest.
+            </p>
+          </div>
+        </div>
+
+        <div class="flex items-center space-x-4">
+          <button class="bg-gray-700 hover:bg-gray-600 rounded-full w-10 h-10 flex items-center justify-center">
+            <i class="fas fa-step-backward text-sm"></i>
+          </button>
+          <button class="bg-yellow-500 hover:bg-yellow-400 rounded-full w-12 h-12 flex items-center justify-center text-black">
+            <i class="fas fa-play text-lg"></i>
+          </button>
+          <button class="bg-gray-700 hover:bg-gray-600 rounded-full w-10 h-10 flex items-center justify-center">
+            <i class="fas fa-step-forward text-sm"></i>
+          </button>
+        </div>
+
+        <div class="w-full md:w-64">
+          <div class="h-2 bg-gray-700 rounded-full overflow-hidden">
+            <div class="h-full bg-yellow-500 w-2/3"></div>
+          </div>
+          <div class="flex justify-between text-xs text-gray-400 mt-2">
+            <span>2:30</span>
+            <span>7:45</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+        <!-- 4. SERVICES -->
+       <!-- 4. SERVICES -->
+<section id="services" class="py-20 section-alt">
+  <div class="container mx-auto px-4">
+    <!-- Section Header -->
+    <div class="text-center mb-16">
+      <h2 class="text-4xl font-bold mb-4">
+        Our <span class="gradient-text">Services</span>
+      </h2>
+      <p class="text-gray-400 max-w-3xl mx-auto">
+        360° outdoor and ambient media solutions for brands that want high-impact visibility.
+      </p>
+    </div>
+
+    <!-- Hoarding / Outdoor Media -->
+    <div class="mb-16">
+      <h3 class="text-3xl font-bold mb-4 text-center">
+        Large Format <span class="gradient-text">Hoarding</span>
+      </h3>
+      <p class="text-gray-300 text-center mb-10 max-w-3xl mx-auto">
+        High-impact outdoor hoardings across highways, city centers, malls and transit hubs in multiple cities.
+      </p>
+
+      <div class="grid gap-8 md:grid-cols-3">
+        <!-- Highway Billboards -->
+        <div class="bg-gray-800 rounded-xl p-6 h-full hover:scale-105 hover:shadow-xl transition-all duration-300">
+          <div class="relative mb-4">
+            <img src="https://images.unsplash.com/photo-1625246333195-78d9c38ad449?auto=format&fit=crop&w=400&q=80"
+                 alt="Highway Billboard"
+                 class="w-full h-48 object-cover rounded-lg">
+            <div class="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent rounded-lg"></div>
+            <div class="absolute bottom-3 left-3">
+              <span class="bg-yellow-500 text-black px-3 py-1 rounded-full text-xs font-semibold">
+                20+ Highway Locations
+              </span>
+            </div>
+          </div>
+          <h4 class="text-xl font-bold mb-2">Highway Hoardings</h4>
+          <p class="text-gray-300 text-sm mb-4">
+            Long‑distance visibility on key intercity routes for brand dominance.
+          </p>
+          <div class="flex items-center justify-between">
+            <span class="text-yellow-500 font-semibold text-sm">From ₹25,000 / month</span>
+            <button onclick="contactService('highway')"
+                    class="bg-yellow-500 hover:bg-yellow-400 text-black px-4 py-2 rounded-lg text-xs font-bold transition">
+              Get Quote
+            </button>
+          </div>
+        </div>
+
+        <!-- City Center Billboards -->
+        <div class="bg-gray-800 rounded-xl p-6 h-full hover:scale-105 hover:shadow-xl transition-all duration-300">
+          <div class="relative mb-4">
+            <img src="https://images.unsplash.com/photo-1449824913935-59a10b8d2000?auto=format&fit=crop&w=400&q=80"
+                 alt="City Center Billboard"
+                 class="w-full h-48 object-cover rounded-lg">
+            <div class="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent rounded-lg"></div>
+            <div class="absolute bottom-3 left-3">
+              <span class="bg-yellow-500 text-black px-3 py-1 rounded-full text-xs font-semibold">
+                12 Prime Spots
+              </span>
+            </div>
+          </div>
+          <h4 class="text-xl font-bold mb-2">City Center Hoardings</h4>
+          <p class="text-gray-300 text-sm mb-4">
+            Premium locations near markets, junctions and business districts.
+          </p>
+          <div class="flex items-center justify-between">
+            <span class="text-yellow-500 font-semibold text-sm">From ₹35,000 / month</span>
+            <button onclick="contactService('city')"
+                    class="bg-yellow-500 hover:bg-yellow-400 text-black px-4 py-2 rounded-lg text-xs font-bold transition">
+              Get Quote
+            </button>
+          </div>
+        </div>
+
+        <!-- Mall Billboards -->
+        <div class="bg-gray-800 rounded-xl p-6 h-full hover:scale-105 hover:shadow-xl transition-all duration-300">
+          <div class="relative mb-4">
+            <img src="https://images.unsplash.com/photo-1441986300917-64674bd600d8?auto=format&fit=crop&w=400&q=80"
+                 alt="Mall Billboard"
+                 class="w-full h-48 object-cover rounded-lg">
+            <div class="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent rounded-lg"></div>
+            <div class="absolute bottom-3 left-3">
+              <span class="bg-yellow-500 text-black px-3 py-1 rounded-full text-xs font-semibold">
+                8+ Premium Malls
+              </span>
+            </div>
+          </div>
+          <h4 class="text-xl font-bold mb-2">Mall Branding</h4>
+          <p class="text-gray-300 text-sm mb-4">
+            Engage high‑spend audiences inside top malls and retail destinations.
+          </p>
+          <div class="flex items-center justify-between">
+            <span class="text-yellow-500 font-semibold text-sm">From ₹45,000 / month</span>
+            <button onclick="contactService('malls')"
+                    class="bg-yellow-500 hover:bg-yellow-400 text-black px-4 py-2 rounded-lg text-xs font-bold transition">
+              Get Quote
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Ambient Media (Indoor / Experience‑based) -->
+    <div>
+      <h3 class="text-3xl font-bold mb-4 text-center">
+        Ambient <span class="gradient-text">Media</span>
+      </h3>
+      <p class="text-gray-300 text-center mb-10 max-w-3xl mx-auto">
+        Integrated audio + visual experiences in cafes, public spaces and transit to keep your brand always-on.
+      </p>
+
+      <div class="grid gap-8 md:grid-cols-3">
+        <!-- Cafes & Restaurants -->
+        <div class="bg-gray-800 rounded-xl p-6 h-full hover:scale-105 hover:shadow-xl transition-all duration-300">
+          <div class="relative mb-4">
+            <img src="https://images.unsplash.com/photo-1509042239860-f550ce710b93?auto=format&fit=crop&w=400&q=80"
+                 alt="Cafe Ambient Media"
+                 class="w-full h-48 object-cover rounded-lg">
+            <div class="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent rounded-lg"></div>
+            <div class="absolute bottom-3 left-3">
+              <span class="bg-yellow-500 text-black px-3 py-1 rounded-full text-xs font-semibold">
+                45+ Cafe Venues
+              </span>
+            </div>
+          </div>
+                            <h4 class="text-xl font-bold mb-2">Digital Signage Network</h4>
+                            <p class="text-gray-300 text-sm mb-4">
+                            Digital LCD displays and promotional screens across high-traffic urban areas.
+          </p>
+          <div class="flex items-center justify-between">
+            <span class="text-yellow-500 font-semibold text-sm">Custom packages</span>
+            <button onclick="contactService('cafes')"
+                    class="bg-yellow-500 hover:bg-yellow-400 text-black px-4 py-2 rounded-lg text-xs font-bold transition">
+              Get Quote
+            </button>
+          </div>
+        </div>
+
+        <!-- Theme Parks & Leisure -->
+        <div class="bg-gray-800 rounded-xl p-6 h-full hover:scale-105 hover:shadow-xl transition-all duration-300">
+          <div class="relative mb-4">
+            <img src="https://images.unsplash.com/photo-1544551763-46a013bb70d5?auto=format&fit=crop&w=400&q=80"
+                 alt="Theme Park Branding"
+                 class="w-full h-48 object-cover rounded-lg">
+            <div class="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent rounded-lg"></div>
+            <div class="absolute bottom-3 left-3">
+              <span class="bg-yellow-500 text-black px-3 py-1 rounded-full text-xs font-semibold">
+                6 Leisure Venues
+              </span>
+            </div>
+          </div>
+          <h4 class="text-xl font-bold mb-2">Theme Parks & Leisure</h4>
+          <p class="text-gray-300 text-sm mb-4">
+            Branded experiences for families and tourists with synced audio announcements.
+          </p>
+          <div class="flex items-center justify-between">
+            <span class="text-yellow-500 font-semibold text-sm">Custom packages</span>
+            <button onclick="contactService('themeparks')"
+                    class="bg-yellow-500 hover:bg-yellow-400 text-black px-4 py-2 rounded-lg text-xs font-bold transition">
+              Get Quote
+            </button>
+          </div>
+        </div>
+
+        <!-- Public Transport Media -->
+        <div class="bg-gray-800 rounded-xl p-6 h-full hover:scale-105 hover:shadow-xl transition-all duration-300">
+          <div class="relative mb-4">
+            <img src="https://images.unsplash.com/photo-1558618666-fcd25c85cd64?auto=format&fit=crop&w=400&q=80"
+                 alt="Public Transport Media"
+                 class="w-full h-48 object-cover rounded-lg">
+            <div class="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent rounded-lg"></div>
+            <div class="absolute bottom-3 left-3">
+              <span class="bg-yellow-500 text-black px-3 py-1 rounded-full text-xs font-semibold">
+                Metro & Bus Network
+              </span>
+            </div>
+          </div>
+          <h4 class="text-xl font-bold mb-2">Transit Media</h4>
+          <p class="text-gray-300 text-sm mb-4">
+            Daily‑reach formats across metro, BRTS and bus stations with high-frequency exposure.
+          </p>
+          <div class="flex items-center justify-between">
+            <span class="text-yellow-500 font-semibold text-sm">Custom packages</span>
+            <button onclick="contactService('transport')"
+                    class="bg-yellow-500 hover:bg-yellow-400 text-black px-4 py-2 rounded-lg text-xs font-bold transition">
+              Get Quote
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+        <!-- 5. PRODUCTS -->
+        <section id="products" class="py-20 section-alt">
+            <div class="container mx-auto px-4">
+                <div class="text-center mb-16">
+                    <h2 class="text-4xl font-bold mb-4">Our Shows & <span class="gradient-text">Programs</span></h2>
+                    <p class="text-gray-400 max-w-3xl mx-auto">Enjoy our exclusive radio programs featuring the best in entertainment, talk shows, and interactive experiences</p>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5 gap-8">
+                    <!-- Song On Demand -->
+                    <div class="radio-card bg-gray-800 rounded-xl overflow-hidden hover:scale-105 transition-transform duration-300">
+                        <div class="relative h-64 bg-gradient-to-br from-yellow-500/20 to-purple-500/20">
+                            <div class="absolute inset-0 bg-[url('https://live.radio2pir.com/public/images/store_images/stores/song_on_demand.jpeg')] bg-cover bg-center"></div>
+                            <div class="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent"></div>
+                            <div class="absolute bottom-4 left-4 right-4">
+                                <button class="w-full bg-yellow-500 hover:bg-yellow-400 text-black font-bold py-2 px-4 rounded-lg transition">
+                                    <i class="fas fa-play mr-2"></i> Listen Now
+                                </button>
+                            </div>
+                        </div>
+                        <div class="p-6 text-center">
+                            <h3 class="text-xl font-bold mb-2 text-yellow-500">Song On Demand</h3>
+                            <p class="text-gray-300 text-sm">Request and dedicate your favorite songs to loved ones</p>
+                        </div>
+                    </div>
+
+                    <!-- Get Popular -->
+                    <div class="radio-card bg-gray-800 rounded-xl overflow-hidden hover:scale-105 transition-transform duration-300">
+                        <div class="relative h-64 bg-gradient-to-br from-blue-500/20 to-cyan-500/20">
+                            <div class="absolute inset-0 bg-[url('https://live.radio2pir.com/public/images/store_images/stores/get_popular.jpeg')] bg-cover bg-center"></div>
+                            <div class="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent"></div>
+                            <div class="absolute bottom-4 left-4 right-4">
+                                <button class="w-full bg-yellow-500 hover:bg-yellow-400 text-black font-bold py-2 px-4 rounded-lg transition">
+                                    <i class="fas fa-play mr-2"></i> Listen Now
+                                </button>
+                            </div>
+                        </div>
+                        <div class="p-6 text-center">
+                            <h3 class="text-xl font-bold mb-2 text-yellow-500">Get Popular</h3>
+                            <p class="text-gray-300 text-sm">Trending content and viral music picks</p>
+                        </div>
+                    </div>
+
+                    <!-- Fun with Tadka -->
+                    <div class="radio-card bg-gray-800 rounded-xl overflow-hidden hover:scale-105 transition-transform duration-300">
+                        <div class="relative h-64 bg-gradient-to-br from-green-500/20 to-teal-500/20">
+                            <div class="absolute inset-0 bg-[url('https://live.radio2pir.com/public/images/store_images/stores/fun_with_tadka.jpeg')] bg-cover bg-center"></div>
+                            <div class="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent"></div>
+                            <div class="absolute bottom-4 left-4 right-4">
+                                <button class="w-full bg-yellow-500 hover:bg-yellow-400 text-black font-bold py-2 px-4 rounded-lg transition">
+                                    <i class="fas fa-play mr-2"></i> Listen Now
+                                </button>
+                            </div>
+                        </div>
+                        <div class="p-6 text-center">
+                            <h3 class="text-xl font-bold mb-2 text-yellow-500">Fun with Tadka</h3>
+                            <p class="text-gray-300 text-sm">Masala entertainment with celebrity gossip and fun facts</p>
+                        </div>
+                    </div>
+
+                    <!-- Affair with Air -->
+                    <div class="radio-card bg-gray-800 rounded-xl overflow-hidden hover:scale-105 transition-transform duration-300">
+                        <div class="relative h-64 bg-gradient-to-br from-purple-500/20 to-pink-500/20">
+                            <div class="absolute inset-0 bg-[url('https://live.radio2pir.com/public/images/store_images/stores/affair_with_air.jpeg')] bg-cover bg-center"></div>
+                            <div class="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent"></div>
+                            <div class="absolute bottom-4 left-4 right-4">
+                                <button class="w-full bg-yellow-500 hover:bg-yellow-400 text-black font-bold py-2 px-4 rounded-lg transition">
+                                    <i class="fas fa-play mr-2"></i> Listen Now
+                                </button>
+                            </div>
+                        </div>
+                        <div class="p-6 text-center">
+                            <h3 class="text-xl font-bold mb-2 text-yellow-500">Affair with Air</h3>
+                            <p class="text-gray-300 text-sm">Romantic discussions and relationship advice</p>
+                        </div>
+                    </div>
+
+                    <!-- Khat Dil Se Dil Tak -->
+                    <div class="radio-card bg-gray-800 rounded-xl overflow-hidden hover:scale-105 transition-transform duration-300">
+                        <div class="relative h-64 bg-gradient-to-br from-red-500/20 to-orange-500/20">
+                            <div class="absolute inset-0 bg-[url('https://live.radio2pir.com/public/images/store_images/stores/khat_dil_se_dil_tak.jpeg')] bg-cover bg-center"></div>
+                            <div class="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent"></div>
+                            <div class="absolute bottom-4 left-4 right-4">
+                                <button class="w-full bg-yellow-500 hover:bg-yellow-400 text-black font-bold py-2 px-4 rounded-lg transition">
+                                    <i class="fas fa-play mr-2"></i> Listen Now
+                                </button>
+                            </div>
+                        </div>
+                        <div class="p-6 text-center">
+                            <h3 class="text-xl font-bold mb-2 text-yellow-500">Khat Dil Se Dil Tak</h3>
+                            <p class="text-gray-300 text-sm">Heart-to-heart conversations that touch your soul</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Program Features -->
+                <div class="mt-16 bg-gray-800/50 rounded-xl p-8">
+                    <div class="text-center mb-8">
+                        <h3 class="text-2xl font-bold mb-4">Program <span class="gradient-text">Features</span></h3>
+                        <p class="text-gray-300">What makes Radio 2PIR programs special</p>
+                    </div>
+
+                    <div class="grid md:grid-cols-3 gap-6">
+                        <div class="text-center">
+                            <div class="bg-yellow-500/20 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4">
+                                <i class="fas fa-microphone-alt text-yellow-500 text-2xl"></i>
+                            </div>
+                            <h4 class="font-bold mb-2">Live Interactive</h4>
+                            <p class="text-gray-400 text-sm">Real-time audience participation and engagement</p>
+                        </div>
+                        <div class="text-center">
+                            <div class="bg-yellow-500/20 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4">
+                                <i class="fas fa-clock text-yellow-500 text-2xl"></i>
+                            </div>
+                            <h4 class="font-bold mb-2">Regular Schedule</h4>
+                            <p class="text-gray-400 text-sm">Consistent programming at fixed times daily</p>
+                        </div>
+                        <div class="text-center">
+                            <div class="bg-yellow-500/20 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4">
+                                <i class="fas fa-star text-yellow-500 text-2xl"></i>
+                            </div>
+                            <h4 class="font-bold mb-2">Exclusive Content</h4>
+                            <p class="text-gray-400 text-sm">Unique shows not available elsewhere</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 6. CLIENTS -->
+        <section id="clients" class="py-20 section-alt">
+            <div class="container mx-auto px-4">
+                <div class="text-center mb-16">
+                    <h2 class="text-4xl font-bold mb-4">Our <span class="gradient-text">Clients & Partners</span></h2>
+                    <p class="text-gray-400 max-w-3xl mx-auto">Trusted by leading brands across industries</p>
+                </div>
+
+                <!-- Our Clients -->
+                <div class="mb-16">
+                    <h3 class="text-2xl font-bold mb-8 text-center">Our <span class="gradient-text">Valued Clients</span></h3>
+                    <div class="relative overflow-hidden">
+                        <div id="clientsSlider" class="flex" style="width: calc(200px * 12);">
+                            <!-- First set -->
+                            <div class="bg-gray-800/50 rounded-xl p-6 flex flex-col items-center justify-center h-40 radio-card mr-8 min-w-[200px] hover:scale-105 transition-transform duration-500">
+                                <div class="w-16 h-16 bg-gradient-to-br from-yellow-500 to-orange-500 rounded-full flex items-center justify-center mb-4">
+                                    <i class="fas fa-coffee text-2xl text-black"></i>
+                                </div>
+                                <h4 class="text-xl font-bold">Tea Post</h4>
+                                <p class="text-gray-400 text-sm">Since 2021</p>
+                            </div>
+
+                            <div class="bg-gray-800/50 rounded-xl p-6 flex flex-col items-center justify-center h-40 radio-card mr-8 min-w-[200px] hover:scale-105 transition-transform duration-500">
+                                <div class="w-16 h-16 bg-gradient-to-br from-blue-500 to-cyan-500 rounded-full flex items-center justify-center mb-4">
+                                    <i class="fas fa-box-open text-2xl text-white"></i>
+                                </div>
+                                <h4 class="text-xl font-bold">Boxpark</h4>
+                                <p class="text-gray-400 text-sm">Retail Solutions</p>
+                            </div>
+
+                            <div class="bg-gray-800/50 rounded-xl p-6 flex flex-col items-center justify-center h-40 radio-card mr-8 min-w-[200px] hover:scale-105 transition-transform duration-500">
+                                <div class="w-16 h-16 bg-gradient-to-br from-purple-500 to-pink-500 rounded-full flex items-center justify-center mb-4">
+                                    <i class="fas fa-tshirt text-2xl text-white"></i>
+                                </div>
+                                <h4 class="text-xl font-bold">Urban Threads</h4>
+                                <p class="text-gray-400 text-sm">Fashion Brand</p>
+                            </div>
+
+                            <div class="bg-gray-800/50 rounded-xl p-6 flex flex-col items-center justify-center h-40 radio-card mr-8 min-w-[200px] hover:scale-105 transition-transform duration-500">
+                                <div class="w-16 h-16 bg-gradient-to-br from-green-500 to-teal-500 rounded-full flex items-center justify-center mb-4">
+                                    <i class="fas fa-utensils text-2xl text-white"></i>
+                                </div>
+                                <h4 class="text-xl font-bold">Spice Route</h4>
+                                <p class="text-gray-400 text-sm">Restaurant Chain</p>
+                            </div>
+
+                            <!-- Duplicate for continuous scrolling -->
+                            <div class="bg-gray-800/50 rounded-xl p-6 flex flex-col items-center justify-center h-40 radio-card mr-8 min-w-[200px] hover:scale-105 transition-transform duration-500">
+                                <div class="w-16 h-16 bg-gradient-to-br from-yellow-500 to-orange-500 rounded-full flex items-center justify-center mb-4">
+                                    <i class="fas fa-coffee text-2xl text-black"></i>
+                                </div>
+                                <h4 class="text-xl font-bold">Tea Post</h4>
+                                <p class="text-gray-400 text-sm">Since 2021</p>
+                            </div>
+
+                            <div class="bg-gray-800/50 rounded-xl p-6 flex flex-col items-center justify-center h-40 radio-card mr-8 min-w-[200px] hover:scale-105 transition-transform duration-500">
+                                <div class="w-16 h-16 bg-gradient-to-br from-blue-500 to-cyan-500 rounded-full flex items-center justify-center mb-4">
+                                    <i class="fas fa-box-open text-2xl text-white"></i>
+                                </div>
+                                <h4 class="text-xl font-bold">Boxpark</h4>
+                                <p class="text-gray-400 text-sm">Retail Solutions</p>
+                            </div>
+
+                            <div class="bg-gray-800/50 rounded-xl p-6 flex flex-col items-center justify-center h-40 radio-card mr-8 min-w-[200px] hover:scale-105 transition-transform duration-500">
+                                <div class="w-16 h-16 bg-gradient-to-br from-purple-500 to-pink-500 rounded-full flex items-center justify-center mb-4">
+                                    <i class="fas fa-tshirt text-2xl text-white"></i>
+                                </div>
+                                <h4 class="text-xl font-bold">Urban Threads</h4>
+                                <p class="text-gray-400 text-sm">Fashion Brand</p>
+                            </div>
+
+                            <div class="bg-gray-800/50 rounded-xl p-6 flex flex-col items-center justify-center h-40 radio-card min-w-[200px] hover:scale-105 transition-transform duration-500">
+                                <div class="w-16 h-16 bg-gradient-to-br from-green-500 to-teal-500 rounded-full flex items-center justify-center mb-4">
+                                    <i class="fas fa-utensils text-2xl text-white"></i>
+                                </div>
+                                <h4 class="text-xl font-bold">Spice Route</h4>
+                                <p class="text-gray-400 text-sm">Restaurant Chain</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Advertising Partners -->
+                <div>
+                    <h3 class="text-2xl font-bold mb-8 text-center">Advertising <span class="gradient-text">Partners</span></h3>
+                    <div class="overflow-hidden">
+                        <div class="flex" style="animation: scrollClients 25s linear infinite;">
+                            <!-- First set -->
+                            <div class="bg-gray-800/30 rounded-lg p-4 flex items-center justify-center h-24 mr-6 min-w-[180px]">
+                                <div class="text-center">
+                                    <i class="fas fa-motorcycle text-3xl text-yellow-500 mb-2"></i>
+                                    <div class="font-medium">TVS Bikes</div>
+                                </div>
+                            </div>
+                            <div class="bg-gray-800/30 rounded-lg p-4 flex items-center justify-center h-24 mr-6 min-w-[180px]">
+                                <div class="text-center">
+                                    <i class="fas fa-graduation-cap text-3xl text-yellow-500 mb-2"></i>
+                                    <div class="font-medium">Coaching Centers</div>
+                                </div>
+                            </div>
+                            <div class="bg-gray-800/30 rounded-lg p-4 flex items-center justify-center h-24 mr-6 min-w-[180px]">
+                                <div class="text-center">
+                                    <i class="fas fa-hospital text-3xl text-yellow-500 mb-2"></i>
+                                    <div class="font-medium">Hospitals</div>
+                                </div>
+                                </div>
+                            <div class="bg-gray-800/30 rounded-lg p-4 flex items-center justify-center h-24 mr-6 min-w-[180px]">
+                                <div class="text-center">
+                                    <i class="fas fa-home text-3xl text-yellow-500 mb-2"></i>
+                                    <div class="font-medium">Real Estate</div>
+                                </div>
+                            </div>
+                            <div class="bg-gray-800/30 rounded-lg p-4 flex items-center justify-center h-24 mr-6 min-w-[180px]">
+                                <div class="text-center">
+                                    <i class="fas fa-car text-3xl text-yellow-500 mb-2"></i>
+                                    <div class="font-medium">Automobile</div>
+                                </div>
+                            </div>
+                            <div class="bg-gray-800/30 rounded-lg p-4 flex items-center justify-center h-24 min-w-[180px]">
+                                <div class="text-center">
+                                    <i class="fas fa-utensils text-3xl text-yellow-500 mb-2"></i>
+                                    <div class="font-medium">Food & Beverage</div>
+                                </div>
+                            </div>
+
+                            <!-- Duplicate for continuous scrolling -->
+                            <div class="bg-gray-800/30 rounded-lg p-4 flex items-center justify-center h-24 mr-6 min-w-[180px]">
+                                <div class="text-center">
+                                    <i class="fas fa-motorcycle text-3xl text-yellow-500 mb-2"></i>
+                                    <div class="font-medium">TVS Bikes</div>
+                                </div>
+                            </div>
+                            <div class="bg-gray-800/30 rounded-lg p-4 flex items-center justify-center h-24 mr-6 min-w-[180px]">
+                                <div class="text-center">
+                                    <i class="fas fa-graduation-cap text-3xl text-yellow-500 mb-2"></i>
+                                    <div class="font-medium">Coaching Centers</div>
+                                </div>
+                            </div>
+                            <div class="bg-gray-800/30 rounded-lg p-4 flex items-center justify-center h-24 mr-6 min-w-[180px]">
+                                <div class="text-center">
+                                    <i class="fas fa-hospital text-3xl text-yellow-500 mb-2"></i>
+                                    <div class="font-medium">Hospitals</div>
+                                </div>
+                            </div>
+                            <div class="bg-gray-800/30 rounded-lg p-4 flex items-center justify-center h-24 mr-6 min-w-[180px]">
+                                <div class="text-center">
+                                    <i class="fas fa-home text-3xl text-yellow-500 mb-2"></i>
+                                    <div class="font-medium">Real Estate</div>
+                                </div>
+                            </div>
+                            <div class="bg-gray-800/30 rounded-lg p-4 flex items-center justify-center h-24 mr-6 min-w-[180px]">
+                                <div class="text-center">
+                                    <i class="fas fa-car text-3xl text-yellow-500 mb-2"></i>
+                                    <div class="font-medium">Automobile</div>
+                                </div>
+                            </div>
+                            <div class="bg-gray-800/30 rounded-lg p-4 flex items-center justify-center h-24 min-w-[180px]">
+                                <div class="text-center">
+                                    <i class="fas fa-utensils text-3xl text-yellow-500 mb-2"></i>
+                                    <div class="font-medium">Food & Beverage</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 7. JOCKEYS -->
+        <section id="jockeys" class="py-20 bg-gray-900">
+            <div class="container mx-auto px-4">
+                <div class="text-center mb-16">
+                    <h2 class="text-4xl font-bold mb-4">Meet Our <span class="gradient-text">Jockeys</span></h2>
+                    <p class="text-gray-400 max-w-3xl mx-auto">The voices that make Radio 2PIR special</p>
+                </div>
+
+                <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
+                    <!-- RJ 1 -->
+                    <div class="bg-gray-800 rounded-xl overflow-hidden radio-card">
+                        <div class="h-48 bg-gradient-to-br from-yellow-500 to-purple-500 relative">
+                            <div class="absolute inset-0 bg-[url('https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=800&q=80')] bg-cover bg-center"></div>
+                            <div class="absolute bottom-4 left-4 bg-yellow-500 text-black px-3 py-1 rounded-full text-sm font-bold">
+                                LIVE NOW
+                            </div>
+                        </div>
+                        <div class="p-6">
+                            <h3 class="text-xl font-bold mb-1">RJ Karan</h3>
+                            <p class="text-yellow-500 mb-4">Morning Masala Show</p>
+                            <p class="text-gray-400 text-sm mb-6">Energetic host with 8+ years experience. Specializes in Bollywood music and celebrity interviews.</p>
+                            <div class="flex space-x-3">
+                                <a href="#" class="text-gray-400 hover:text-yellow-500">
+                                    <i class="fab fa-instagram"></i>
+                                </a>
+                                <a href="#" class="text-gray-400 hover:text-yellow-500">
+                                    <i class="fab fa-twitter"></i>
+                                </a>
+                                <button onclick="playShow('morning-masala')" class="ml-auto bg-gray-700 hover:bg-gray-600 rounded-full w-10 h-10 flex items-center justify-center">
+                                    <i class="fas fa-play text-yellow-500"></i>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- RJ 2 -->
+                    <div class="bg-gray-800 rounded-xl overflow-hidden radio-card">
+                        <div class="h-48 bg-gradient-to-br from-yellow-500 to-purple-500 relative">
+                            <div class="absolute inset-0 bg-[url('https://images.unsplash.com/photo-1494790108755-2616b612b786?auto=format&fit=crop&w=800&q=80')] bg-cover bg-center"></div>
+                        </div>
+                        <div class="p-6">
+                            <h3 class="text-xl font-bold mb-1">RJ Priya</h3>
+                            <p class="text-yellow-500 mb-4">Business Hour</p>
+                            <p class="text-gray-400 text-sm mb-6">Finance expert turned radio host. Brings insightful conversations with industry leaders.</p>
+                            <div class="flex space-x-3">
+                                <a href="#" class="text-gray-400 hover:text-yellow-500">
+                                    <i class="fab fa-instagram"></i>
+                                </a>
+                                <a href="#" class="text-gray-400 hover:text-yellow-500">
+                                    <i class="fab fa-linkedin"></i>
+                                </a>
+                                <button onclick="playShow('business-hour')" class="ml-auto bg-gray-700 hover:bg-gray-600 rounded-full w-10 h-10 flex items-center justify-center">
+                                    <i class="fas fa-play text-yellow-500"></i>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- RJ 3 -->
+                    <div class="bg-gray-800 rounded-xl overflow-hidden radio-card">
+                        <div class="h-48 bg-gradient-to-br from-yellow-500 to-purple-500 relative">
+                            <div class="absolute inset-0 bg-[url('https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&w=800&q=80')] bg-cover bg-center"></div>
+                        </div>
+                        <div class="p-6">
+                            <h3 class="text-xl font-bold mb-1">RJ Sam</h3>
+                            <p class="text-yellow-500 mb-4">Retro Rewind</p>
+                            <p class="text-gray-400 text-sm mb-6">Music historian with vast knowledge of classics from 70s to 90s. Knows every song's story.</p>
+                            <div class="flex space-x-3">
+                                <a href="#" class="text-gray-400 hover:text-yellow-500">
+                                    <i class="fab fa-instagram"></i>
+                                </a>
+                                <a href="#" class="text-gray-400 hover:text-yellow-500">
+                                    <i class="fab fa-facebook"></i>
+                                </a>
+                                <button onclick="playShow('retro-rewind')" class="ml-auto bg-gray-700 hover:bg-gray-600 rounded-full w-10 h-10 flex items-center justify-center">
+                                    <i class="fas fa-play text-yellow-500"></i>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- RJ 4 -->
+                    <div class="bg-gray-800 rounded-xl overflow-hidden radio-card">
+                        <div class="h-48 bg-gradient-to-br from-yellow-500 to-purple-500 relative">
+                            <div class="absolute inset-0 bg-[url('https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?auto=format&fit=crop&w=800&q=80')] bg-cover bg-center"></div>
+                        </div>
+                        <div class="p-6">
+                            <h3 class="text-xl font-bold mb-1">RJ Alex</h3>
+                            <p class="text-yellow-500 mb-4">Evening Drive</p>
+                            <p class="text-gray-400 text-sm mb-6">Your companion for evening commute. Mix of latest hits, traffic updates, and light conversations.</p>
+                            <div class="flex space-x-3">
+                                <a href="#" class="text-gray-400 hover:text-yellow-500">
+                                    <i class="fab fa-instagram"></i>
+                                </a>
+                                <a href="#" class="text-gray-400 hover:text-yellow-500">
+                                    <i class="fab fa-twitter"></i>
+                                </a>
+                                <button onclick="playShow('evening-drive')" class="ml-auto bg-gray-700 hover:bg-gray-600 rounded-full w-10 h-10 flex items-center justify-center">
+                                    <i class="fas fa-play text-yellow-500"></i>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- On-Air Schedule -->
+                <div class="mt-16 bg-gray-800/50 rounded-xl p-8">
+                    <h3 class="text-2xl font-bold mb-6 text-center">On-Air <span class="gradient-text">Schedule</span></h3>
+                    <div class="overflow-x-auto">
+                        <table class="w-full">
+                            <thead>
+                                <tr class="border-b border-gray-700">
+                                    <th class="text-left py-3 px-4">Time</th>
+                                    <th class="text-left py-3 px-4">Show</th>
+                                    <th class="text-left py-3 px-4">Jockey</th>
+                                    <th class="text-left py-3 px-4">Category</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr class="border-b border-gray-800 hover:bg-gray-800/30">
+                                    <td class="py-3 px-4">6:00 AM - 10:00 AM</td>
+                                    <td class="py-3 px-4 font-medium">Morning Masala</td>
+                                    <td class="py-3 px-4 text-yellow-500">RJ Karan</td>
+                                    <td class="py-3 px-4"><span class="bg-gray-700 px-3 py-1 rounded-full text-sm">Bollywood Hits</span></td>
+                                </tr>
+                                <tr class="border-b border-gray-800 hover:bg-gray-800/30">
+                                    <td class="py-3 px-4">10:00 AM - 12:00 PM</td>
+                                    <td class="py-3 px-4 font-medium">Business Hour</td>
+                                    <td class="py-3 px-4 text-yellow-500">RJ Priya</td>
+                                    <td class="py-3 px-4"><span class="bg-gray-700 px-3 py-1 rounded-full text-sm">Talk Show</span></td>
+                                </tr>
+                                <tr class="border-b border-gray-800 hover:bg-gray-800/30">
+                                    <td class="py-3 px-4">12:00 PM - 3:00 PM</td>
+                                    <td class="py-3 px-4 font-medium">Retro Rewind</td>
+                                    <td class="py-3 px-4 text-yellow-500">RJ Sam</td>
+                                    <td class="py-3 px-4"><span class="bg-gray-700 px-3 py-1 rounded-full text-sm">Classics</span></td>
+                                </tr>
+                                <tr class="border-b border-gray-800 hover:bg-gray-800/30">
+                                    <td class="py-3 px-4">5:00 PM - 8:00 PM</td>
+                                    <td class="py-3 px-4 font-medium">Evening Drive</td>
+                                    <td class="py-3 px-4 text-yellow-500">RJ Alex</td>
+                                    <td class="py-3 px-4"><span class="bg-gray-700 px-3 py-1 rounded-full text-sm">Latest Hits</span></td>
+                                </tr>
+                                <tr class="hover:bg-gray-800/30">
+                                    <td class="py-3 px-4">8:00 PM - 12:00 AM</td>
+                                    <td class="py-3 px-4 font-medium">Night Beats</td>
+                                    <td class="py-3 px-4 text-yellow-500">Various Jockeys</td>
+                                    <td class="py-3 px-4"><span class="bg-gray-700 px-3 py-1 rounded-full text-sm">Mixed Genre</span></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 9. TESTIMONIALS -->
+        <section id="testimonials" class="py-20 bg-gray-900">
+            <div class="container mx-auto px-4">
+                <div class="text-center mb-16">
+                    <h2 class="text-4xl font-bold mb-4">What Our <span class="gradient-text">Clients Say</span></h2>
+                    <p class="text-gray-400 max-w-3xl mx-auto">Hear from businesses and listeners who trust Radio 2PIR</p>
+                </div>
+
+                <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8 mb-12">
+                    <!-- Testimonial 1 -->
+                    <div class="bg-gray-800 rounded-xl p-6 radio-card">
+                        <div class="flex items-center mb-6">
+                            <div class="w-12 h-12 bg-gradient-to-r from-yellow-500 to-yellow-300 rounded-full flex items-center justify-center text-black font-bold text-xl mr-4">
+                                TP
+                            </div>
+                            <div>
+                                <h4 class="font-bold">Tea Post</h4>
+                                <div class="text-yellow-500">
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                </div>
+                            </div>
+                        </div>
+                        <p class="text-gray-300 mb-6 italic">
+                            "Radio 2PIR's ambient media service increased our footfall by 30% in just 2 months. Their strategic placement in cafes and public spaces really works!"
+                        </p>
+                        <div class="text-sm text-gray-500">- Owner, Tea Post Chain</div>
+                    </div>
+
+                    <!-- Testimonial 2 -->
+                    <div class="bg-gray-800 rounded-xl p-6 radio-card">
+                        <div class="flex items-center mb-6">
+                            <div class="w-12 h-12 bg-gradient-to-r from-yellow-500 to-yellow-300 rounded-full flex items-center justify-center text-black font-bold text-xl mr-4">
+                                BP
+                            </div>
+                            <div>
+                                <h4 class="font-bold">Boxpark Retail</h4>
+                                <div class="text-yellow-500">
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star-half-alt"></i>
+                                </div>
+                            </div>
+                        </div>
+                        <p class="text-gray-300 mb-6 italic">
+                            "The hoarding campaign across multiple cities gave us incredible visibility. Professional service from start to finish. Highly recommended!"
+                        </p>
+                        <div class="text-sm text-gray-500">- Marketing Head, Boxpark</div>
+                    </div>
+
+                    <!-- Testimonial 3 -->
+                    <div class="bg-gray-800 rounded-xl p-6 radio-card">
+                        <div class="flex items-center mb-6">
+                            <div class="w-12 h-12 bg-gradient-to-r from-yellow-500 to-yellow-300 rounded-full flex items-center justify-center text-black font-bold text-xl mr-4">
+                                RS
+                            </div>
+                            <div>
+                                <h4 class="font-bold">Regular Listener</h4>
+                                <div class="text-yellow-500">
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                </div>
+                            </div>
+                        </div>
+                        <p class="text-gray-300 mb-6 italic">
+                            "Been listening for 5 years! The birthday shoutout they did for my daughter was magical. RJ Karan made it so special. Thank you Radio 2PIR!"
+                        </p>
+                        <div class="text-sm text-gray-500">- Sunita Patel, Ahmedabad</div>
+                    </div>
+                </div>
+
+                <!-- Stats -->
+                <div class="bg-gray-800/50 rounded-xl p-8">
+                    <div class="grid grid-cols-2 md:grid-cols-4 gap-8">
+                        <div class="text-center">
+                            <div class="text-3xl md:text-4xl font-bold text-yellow-500">98%</div>
+                            <div class="text-gray-400">Client Satisfaction</div>
+                        </div>
+                        <div class="text-center">
+                            <div class="text-3xl md:text-4xl font-bold text-yellow-500">150+</div>
+                            <div class="text-gray-400">Repeat Clients</div>
+                        </div>
+                        <div class="text-center">
+                            <div class="text-3xl md:text-4xl font-bold text-yellow-500">4.8/5</div>
+                            <div class="text-gray-400">Average Rating</div>
+                        </div>
+                        <div class="text-center">
+                            <div class="text-3xl md:text-4xl font-bold text-yellow-500">24h</div>
+                            <div class="text-gray-400">Response Time</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 10. CHANNELS -->
+        <section id="channels" class="py-20 section-alt">
+            <div class="container mx-auto px-4">
+                <div class="text-center mb-16">
+                    <h2 class="text-4xl font-bold mb-4">Our <span class="gradient-text">Channels</span></h2>
+                    <p class="text-gray-400 max-w-3xl mx-auto">Tune in to Radio 2PIR across multiple platforms</p>
+                </div>
+
+                <div class="grid md:grid-cols-2 gap-12 mb-16">
+                    <!-- FM Channel -->
+                    <div class="bg-gradient-to-br from-gray-800 to-gray-900 rounded-xl p-8">
+                        <div class="flex items-center mb-8">
+                            <div class="bg-yellow-500 text-black p-4 rounded-xl mr-6">
+                                <i class="fas fa-broadcast-tower text-3xl"></i>
+                            </div>
+                            <div>
+                                <h3 class="text-2xl font-bold">FM 98.3</h3>
+                                <p class="text-gray-400">Primary Broadcast Channel</p>
+                            </div>
+                        </div>
+
+                        <div class="space-y-6">
+                            <div class="flex items-center justify-between p-4 bg-gray-900/50 rounded-lg">
+                                <div>
+                                    <div class="font-bold">Coverage Area</div>
+                                    <div class="text-sm text-gray-400">Gujarat & Surrounding Regions</div>
+                                </div>
+                                <i class="fas fa-map-marked-alt text-yellow-500 text-xl"></i>
+                            </div>
+
+                            <div class="flex items-center justify-between p-4 bg-gray-900/50 rounded-lg">
+                                <div>
+                                    <div class="font-bold">Live Streaming</div>
+                                    <div class="text-sm text-gray-400">Available 24/7 Online</div>
+                                </div>
+                                <i class="fas fa-wifi text-yellow-500 text-xl"></i>
+                            </div>
+
+                            <div class="flex items-center justify-between p-4 bg-gray-900/50 rounded-lg">
+                                <div>
+                                    <div class="font-bold">Signal Strength</div>
+                                    <div class="text-sm text-gray-400">Excellent Across Region</div>
+                                </div>
+                                <div class="flex space-x-1">
+                                    <div class="w-2 h-6 bg-yellow-500 rounded-full"></div>
+                                    <div class="w-2 h-8 bg-yellow-500 rounded-full"></div>
+                                    <div class="w-2 h-10 bg-yellow-500 rounded-full"></div>
+                                    <div class="w-2 h-12 bg-yellow-500 rounded-full"></div>
+                                    <div class="w-2 h-14 bg-yellow-500 rounded-full"></div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <button onclick="tuneToFM()" class="mt-8 w-full bg-yellow-500 hover:bg-yellow-400 text-black font-bold py-3 rounded-lg">
+                            <i class="fas fa-play mr-2"></i> Tune In Now
+                        </button>
+                    </div>
+
+                    <!-- Online Channels -->
+                    <div>
+                        <h3 class="text-2xl font-bold mb-6">Online Streaming <span class="gradient-text">Platforms</span></h3>
+
+                        <div class="space-y-4 mb-8">
+                            <div class="flex items-center justify-between p-4 bg-gray-800/50 rounded-lg hover:bg-gray-800 cursor-pointer" onclick="selectChannel('web')">
+                                <div class="flex items-center">
+                                    <div class="bg-gray-900 p-3 rounded-lg mr-4">
+                                        <i class="fas fa-globe text-yellow-500"></i>
+                                    </div>
+                                    <div>
+                                        <div class="font-bold">Web Player</div>
+                                        <div class="text-sm text-gray-400">Direct on our website</div>
+                                    </div>
+                                </div>
+                                <i class="fas fa-chevron-right text-gray-400"></i>
+                            </div>
+
+                            <div class="flex items-center justify-between p-4 bg-gray-800/50 rounded-lg hover:bg-gray-800 cursor-pointer" onclick="selectChannel('mobile')">
+                                <div class="flex items-center">
+                                    <div class="bg-gray-900 p-3 rounded-lg mr-4">
+                                        <i class="fas fa-mobile-alt text-yellow-500"></i>
+                                    </div>
+                                    <div>
+                                        <div class="font-bold">Mobile App</div>
+                                        <div class="text-sm text-gray-400">Available on iOS & Android</div>
+                                    </div>
+                                </div>
+                                <i class="fas fa-chevron-right text-gray-400"></i>
+                            </div>
+
+                            <div class="flex items-center justify-between p-4 bg-gray-800/50 rounded-lg hover:bg-gray-800 cursor-pointer" onclick="selectChannel('smart')">
+                                <div class="flex items-center">
+                                    <div class="bg-gray-900 p-3 rounded-lg mr-4">
+                                        <i class="fas fa-tv text-yellow-500"></i>
+                                    </div>
+                                    <div>
+                                        <div class="font-bold">Smart Devices</div>
+                                        <div class="text-sm text-gray-400">Alexa, Google Home, etc.</div>
+                                    </div>
+                                </div>
+                                <i class="fas fa-chevron-right text-gray-400"></i>
+                            </div>
+                        </div>
+
+                        <div class="bg-gray-900/30 rounded-lg p-6">
+                            <h4 class="font-bold mb-4">Quick Listen Links</h4>
+                            <div class="flex flex-wrap gap-3">
+                                <button onclick="playStream()" class="bg-gray-800 hover:bg-gray-700 px-4 py-2 rounded-lg">
+                                    <i class="fas fa-play text-yellow-500 mr-2"></i> Play Now
+                                </button>
+                                <button onclick="openApp('ios')" class="bg-gray-800 hover:bg-gray-700 px-4 py-2 rounded-lg">
+                                    <i class="fab fa-apple mr-2"></i> iOS App
+                                </button>
+                                <button onclick="openApp('android')" class="bg-gray-800 hover:bg-gray-700 px-4 py-2 rounded-lg">
+                                    <i class="fab fa-android mr-2"></i> Android App
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Live Now Section -->
+                <div class="bg-gray-800 rounded-xl p-6">
+                    <div class="flex items-center justify-between mb-6">
+                        <h3 class="text-2xl font-bold">
+                            <i class="fas fa-circle text-red-500 mr-3 animate-pulse"></i>
+                            Live Now on Air
+                        </h3>
+                        <div id="liveTime" class="text-gray-400"></div>
+                    </div>
+
+                    <div class="flex flex-col md:flex-row items-center justify-between gap-6">
+                        <div class="flex items-center">
+                            <div class="w-24 h-24 rounded-xl overflow-hidden mr-6">
+                                <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=400&q=80"
+                                     alt="RJ Karan"
+                                     class="w-full h-full object-cover">
+                            </div>
+                            <div>
+                                <h4 class="text-xl font-bold">Morning Masala</h4>
+                                <p class="text-yellow-500 mb-2">with RJ Karan</p>
+                                <div class="flex items-center text-gray-400">
+                                    <i class="fas fa-users mr-2"></i>
+                                    <span>1,245 currently listening</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="flex items-center space-x-4">
+                            <div class="text-center">
+                                <div class="text-2xl font-bold text-yellow-500">98.3</div>
+                                <div class="text-sm text-gray-400">FM</div>
+                            </div>
+                            <div class="h-12 w-px bg-gray-700"></div>
+                            <div>
+                                <div class="font-bold">Now Playing</div>
+                                <div id="nowPlaying" class="text-gray-400">Latest Bollywood Hits Mix</div>
+                            </div>
+                            <button onclick="togglePlay()" class="bg-yellow-500 hover:bg-yellow-400 text-black w-12 h-12 rounded-full flex items-center justify-center">
+                                <i id="livePlayIcon" class="fas fa-pause"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 11. CONTACT US -->
+        <section id="contact" class="py-20 bg-gray-900">
+            <div class="container mx-auto px-4">
+                <div class="text-center mb-16">
+                    <h2 class="text-4xl font-bold mb-4">Get In <span class="gradient-text">Touch</span></h2>
+                    <p class="text-gray-400 max-w-3xl mx-auto">Contact us for advertising, partnerships, or any inquiries</p>
+                </div>
+
+                <div class="grid md:grid-cols-2 gap-12">
+                    <!-- Contact Form -->
+                    <div class="bg-gray-800 rounded-xl p-8">
+                        <h3 class="text-2xl font-bold mb-6">Send us a Message</h3>
+
+                        <form id="contactForm" onsubmit="submitForm(event)">
+                            <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
+                                <div>
+                                    <label class="block text-gray-400 mb-2">Your Name</label>
+                                    <input type="text"
+                                           class="w-full bg-gray-900 border border-gray-700 rounded-lg px-4 py-3 focus:outline-none focus:border-yellow-500"
+                                           placeholder="Enter your name"
+                                           required>
+                                </div>
+                                <div>
+                                    <label class="block text-gray-400 mb-2">Email Address</label>
+                                    <input type="email"
+                                           class="w-full bg-gray-900 border border-gray-700 rounded-lg px-4 py-3 focus:outline-none focus:border-yellow-500"
+                                           placeholder="Enter your email"
+                                           required>
+                                </div>
+                            </div>
+
+                            <div class="mb-6">
+                                <label class="block text-gray-400 mb-2">Subject</label>
+                                <select class="w-full bg-gray-900 border border-gray-700 rounded-lg px-4 py-3 focus:outline-none focus:border-yellow-500">
+                                    <option value="">Select inquiry type</option>
+                                    <option value="advertising">Advertising Services</option>
+                                    <option value="hoarding">Outside Hoarding</option>
+                                    <option value="ambient">Ambient Media</option>
+                                    <option value="products">Product Inquiry</option>
+                                    <option value="partnership">Partnership</option>
+                                    <option value="general">General Inquiry</option>
+                                </select>
+                            </div>
+
+                            <div class="mb-6">
+                                <label class="block text-gray-400 mb-2">Message</label>
+                                <textarea rows="5"
+                                          class="w-full bg-gray-900 border border-gray-700 rounded-lg px-4 py-3 focus:outline-none focus:border-yellow-500"
+                                          placeholder="Tell us about your requirements..."
+                                          required></textarea>
+                            </div>
+
+                            <button type="submit" class="w-full bg-yellow-500 hover:bg-yellow-400 text-black font-bold py-3 rounded-lg">
+                                Send Message <i class="fas fa-paper-plane ml-2"></i>
+                            </button>
+                        </form>
+
+                        <div id="formMessage" class="hidden mt-4 p-4 rounded-lg"></div>
+                    </div>
+
+                    <!-- Contact Info & Social -->
+                    <div>
+                        <div class="mb-8">
+                            <h3 class="text-2xl font-bold mb-6">Contact <span class="gradient-text">Information</span></h3>
+
+                            <div class="space-y-6">
+                                <div class="flex items-start">
+                                    <div class="bg-yellow-500/20 p-3 rounded-lg mr-4">
+                                        <i class="fas fa-map-marker-alt text-yellow-500"></i>
+                                    </div>
+                                    <div>
+                                        <div class="font-bold">Studio Address</div>
+                                        <div class="text-gray-400">B/5, Anand Mangal1 Nr, Swastik Char Rasta, Chimanlal Girdharlal Rd, Navrangpura, Ahmedabad, Gujarat 380009, IN</div>
+                                    </div>
+                                </div>
+
+                                <div class="flex items-start">
+                                    <div class="bg-yellow-500/20 p-3 rounded-lg mr-4">
+                                        <i class="fas fa-phone text-yellow-500"></i>
+                                    </div>
+                                    <div>
+                                        <div class="font-bold">Phone Number</div>
+                                        <div class="text-gray-400">+91 09687453588</div>
+                                        <div class="text-sm text-gray-500">Mon-Sat, 9:00 AM - 7:00 PM</div>
+                                    </div>
+                                </div>
+
+                                <div class="flex items-start">
+                                    <div class="bg-yellow-500/20 p-3 rounded-lg mr-4">
+                                        <i class="fas fa-envelope text-yellow-500"></i>
+                                    </div>
+                                    <div>
+                                        <div class="font-bold">Email Address</div>
+                                        <div class="text-gray-400">radio2pir@gmail.com</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Social Links -->
+                        <div class="bg-gray-800 rounded-xl p-6">
+                            <h3 class="text-xl font-bold mb-6">Connect on <span class="gradient-text">Social Media</span></h3>
+
+                            <div class="grid grid-cols-2 md:grid-cols-3 gap-4">
+                                <a href="#" class="bg-gray-900 hover:bg-gray-800 rounded-lg p-4 flex flex-col items-center justify-center transition">
+                                    <i class="fab fa-instagram text-2xl text-yellow-500 mb-2"></i>
+                                    <div class="font-medium">Instagram</div>
+                                    <div class="text-sm text-gray-400">@radio2pir</div>
+                                </a>
+
+                                <a href="#" class="bg-gray-900 hover:bg-gray-800 rounded-lg p-4 flex flex-col items-center justify-center transition">
+                                    <i class="fab fa-youtube text-2xl text-yellow-500 mb-2"></i>
+                                    <div class="font-medium">YouTube</div>
+                                    <div class="text-sm text-gray-400">Radio 2PIR Official</div>
+                                </a>
+
+                                <a href="#" class="bg-gray-900 hover:bg-gray-800 rounded-lg p-4 flex flex-col items-center justify-center transition">
+                                    <i class="fab fa-whatsapp text-2xl text-yellow-500 mb-2"></i>
+                                    <div class="font-medium">WhatsApp</div>
+                                    <div class="text-sm text-gray-400">+91 98765 43210</div>
+                                </a>
+
+                                <a href="#" class="bg-gray-900 hover:bg-gray-800 rounded-lg p-4 flex flex-col items-center justify-center transition">
+                                    <i class="fab fa-facebook text-2xl text-yellow-500 mb-2"></i>
+                                    <div class="font-medium">Facebook</div>
+                                    <div class="text-sm text-gray-400">Radio 2PIR</div>
+                                </a>
+
+                                <a href="#" class="bg-gray-900 hover:bg-gray-800 rounded-lg p-4 flex flex-col items-center justify-center transition">
+                                    <i class="fab fa-twitter text-2xl text-yellow-500 mb-2"></i>
+                                    <div class="font-medium">Twitter</div>
+                                    <div class="text-sm text-gray-400">@radio2pir</div>
+                                </a>
+
+                                <a href="#" class="bg-gray-900 hover:bg-gray-800 rounded-lg p-4 flex flex-col items-center justify-center transition">
+                                    <i class="fab fa-linkedin text-2xl text-yellow-500 mb-2"></i>
+                                    <div class="font-medium">LinkedIn</div>
+                                    <div class="text-sm text-gray-400">Radio 2PIR Media</div>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Back to Top Button -->
+    <button id="backToTop" class="back-to-top">
+        <i class="fas fa-arrow-up"></i>
+    </button>
+
+    <!-- Footer -->
+    <footer class="bg-gray-950 border-t border-gray-800 py-12">
+        <div class="container mx-auto px-4">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-8 mb-8">
+                <div>
+                    <div class="flex items-center space-x-3 mb-6">
+                        <img src="https://www.radio2pir.com/images/logotop1.png" alt="Radio 2PIR Logo" class="h-10">
+                        <span class="text-2xl font-bold">Radio 2PIR</span>
+                    </div>
+                    <p class="text-gray-400 mb-6">Your voice, your music, your community. Broadcasting since 2010.</p>
+                    <div class="flex space-x-4">
+                        <a href="#" class="text-gray-400 hover:text-yellow-500"><i class="fab fa-instagram text-xl"></i></a>
+                        <a href="#" class="text-gray-400 hover:text-yellow-500"><i class="fab fa-youtube text-xl"></i></a>
+                        <a href="#" class="text-gray-400 hover:text-yellow-500"><i class="fab fa-facebook text-xl"></i></a>
+                        <a href="#" class="text-gray-400 hover:text-yellow-500"><i class="fab fa-whatsapp text-xl"></i></a>
+                    </div>
+                </div>
+
+                <div>
+                    <h3 class="text-xl font-bold mb-6">Quick Links</h3>
+                    <ul class="space-y-3">
+                        <li><a href="#home" class="text-gray-400 hover:text-yellow-500">Home</a></li>
+                        <li><a href="#about" class="text-gray-400 hover:text-yellow-500">About Us</a></li>
+                        <li><a href="#services" class="text-gray-400 hover:text-yellow-500">Services</a></li>
+                        <li><a href="#products" class="text-gray-400 hover:text-yellow-500">Products</a></li>
+                    </ul>
+                </div>
+
+                <div>
+                    <h3 class="text-xl font-bold mb-6">Services</h3>
+                    <ul class="space-y-3">
+                        <li><a href="#services" class="text-gray-400 hover:text-yellow-500">Outside Hoarding</a></li>
+                        <li><a href="#services" class="text-gray-400 hover:text-yellow-500">Ambient Media</a></li>
+                        <li><a href="#products" class="text-gray-400 hover:text-yellow-500">Custom Jingles</a></li>
+                        <li><a href="#products" class="text-gray-400 hover:text-yellow-500">On-Air Services</a></li>
+                    </ul>
+                </div>
+
+                <div>
+                    <h3 class="text-xl font-bold mb-6">Newsletter</h3>
+                    <p class="text-gray-400 mb-4">Subscribe for updates on shows, events, and offers</p>
+                    <div class="flex">
+                        <input type="email"
+                               placeholder="Your email"
+                               class="bg-gray-900 border border-gray-700 rounded-l-lg px-4 py-3 w-full focus:outline-none focus:border-yellow-500">
+                        <button class="bg-yellow-500 hover:bg-yellow-400 text-black px-4 rounded-r-lg">
+                            <i class="fas fa-paper-plane"></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="border-t border-gray-800 pt-8 text-center text-gray-500">
+                <p>&copy; 2023 Radio 2PIR Media Company. All rights reserved. | <a href="#" class="hover:text-yellow-500">Privacy Policy</a> | <a href="#" class="hover:text-yellow-500">Terms of Service</a></p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- JavaScript -->
+    <script>
+        // Mobile Menu Toggle
+        document.getElementById('menuBtn').addEventListener('click', function() {
+            const menu = document.getElementById('mobileMenu');
+            const icon = this.querySelector('i');
+
+            menu.classList.toggle('hidden');
+
+            if (icon.classList.contains('fa-bars')) {
+                icon.classList.remove('fa-bars');
+                icon.classList.add('fa-times');
+            } else {
+                icon.classList.remove('fa-times');
+                icon.classList.add('fa-bars');
+            }
+        });
+
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+
+                const targetId = this.getAttribute('href');
+                if (targetId === '#') return;
+
+                const targetElement = document.querySelector(targetId);
+                if (targetElement) {
+                    // Close mobile menu if open
+                    const mobileMenu = document.getElementById('mobileMenu');
+                    const menuBtnIcon = document.querySelector('#menuBtn i');
+
+                    if (!mobileMenu.classList.contains('hidden')) {
+                        mobileMenu.classList.add('hidden');
+                        menuBtnIcon.classList.remove('fa-times');
+                        menuBtnIcon.classList.add('fa-bars');
+                    }
+
+                    // Scroll to section
+                    window.scrollTo({
+                        top: targetElement.offsetTop - 80,
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+
+        // Audio Player Functions
+        const audio = document.getElementById('mainAudio');
+        const playIcon = document.getElementById('playIcon');
+        const livePlayIcon = document.getElementById('livePlayIcon');
+        const currentTrack = document.getElementById('currentTrack');
+
+        let isPlaying = false;
+        const tracks = [
+            "Ed Sheeran - Shape of You",
+            "Local Artist - Gujarat No Rhythms",
+            "Arijit Singh - Tum Hi Ho",
+            "Latest Bollywood Hits Mix",
+            "Retro Classic - Summer of '69",
+            "Prateek Kuhad - Cold/Mess",
+            "AP Dhillon - Excuses"
+        ];
+
+        function togglePlay() {
+            if (audio.paused) {
+                audio.play();
+                isPlaying = true;
+                playIcon.classList.remove('fa-play');
+                playIcon.classList.add('fa-pause');
+                livePlayIcon.classList.remove('fa-play');
+                livePlayIcon.classList.add('fa-pause');
+            } else {
+                audio.pause();
+                isPlaying = false;
+                playIcon.classList.remove('fa-pause');
+                playIcon.classList.add('fa-play');
+                livePlayIcon.classList.remove('fa-pause');
+                livePlayIcon.classList.add('fa-play');
+            }
+        }
+
+        // Simulate track changes
+        function updateTrack() {
+            if (isPlaying) {
+                const randomTrack = tracks[Math.floor(Math.random() * tracks.length)];
+                currentTrack.textContent = `Live: ${randomTrack}`;
+                document.getElementById('nowPlaying').textContent = randomTrack;
+            }
+        }
+
+        // Update every 15 seconds if playing
+        setInterval(updateTrack, 15000);
+
+        // Display Board Functions
+        function refreshBoard() {
+            // Show refresh confirmation
+            const btn = event.target.closest('button');
+            const originalHTML = btn.innerHTML;
+            btn.innerHTML = '<i class="fas fa-check"></i> Refreshed';
+            btn.classList.remove('text-gray-400');
+            btn.classList.add('text-green-500');
+
+            setTimeout(() => {
+                btn.innerHTML = originalHTML;
+                btn.classList.remove('text-green-500');
+                btn.classList.add('text-gray-400');
+            }, 2000);
+        }
+
+        // Update live time
+        function updateLiveTime() {
+            const now = new Date();
+            const timeString = now.toLocaleTimeString('en-IN', {
+                hour: '2-digit',
+                minute: '2-digit',
+                hour12: true
+            });
+            document.getElementById('liveTime').textContent = `Live as of ${timeString}`;
+        }
+
+        setInterval(updateLiveTime, 60000);
+        updateLiveTime();
+
+        // Channels Functions
+        function selectChannel(channel) {
+            const channels = {
+                'web': 'Web Player selected. Opening stream...',
+                'mobile': 'Mobile app selected. Redirecting...',
+                'smart': 'Smart device instructions sent.'
+            };
+
+            alert(channels[channel]);
+        }
+
+        function playStream() {
+            if (audio.paused) {
+                togglePlay();
+            }
+            alert('Starting live stream... Enjoy Radio 2PIR!');
+        }
+
+        function tuneToFM() {
+            alert('Tuning to FM 98.3... For best experience, tune your radio to 98.3 MHz');
+        }
+
+        function openApp(platform) {
+            const platforms = {
+                'ios': 'https://apps.apple.com/app/radio-2pir/id1234567890',
+                'android': 'https://play.google.com/store/apps/details?id=com.radio2pir'
+            };
+
+            alert(`Redirecting to ${platform === 'ios' ? 'Apple App Store' : 'Google Play Store'}...`);
+            // In real implementation: window.open(platforms[platform], '_blank');
+        }
+
+        function playShow(showName) {
+            const shows = {
+                'morning-masala': 'Playing Morning Masala with RJ Karan',
+                'business-hour': 'Playing Business Hour with RJ Priya',
+                'retro-rewind': 'Playing Retro Rewind with RJ Sam',
+                'evening-drive': 'Playing Evening Drive with RJ Alex'
+            };
+
+            alert(shows[showName]);
+            if (audio.paused) {
+                togglePlay();
+            }
+        }
+
+        // Contact service function
+        function contactService(serviceType) {
+            const services = {
+                'highway': 'Highway Hoardings',
+                'city': 'City Center Hoardings',
+                'malls': 'Mall Branding',
+                'cafes': 'Digital Signage Network',
+                'themeparks': 'Theme Parks & Leisure Branding',
+                'transport': 'Transit Media Network'
+            };
+
+            const serviceName = services[serviceType];
+            const message = `Hi, I'm interested in your ${serviceName} service. Please provide more details about pricing and implementation.`;
+            const whatsappNumber = '919876543210';
+
+            window.open(`https://wa.me/${whatsappNumber}?text=${encodeURIComponent(message)}`, '_blank');
+
+            // Also show a thank you message
+            alert(`Thank you for your interest in ${serviceName}!\n\nYou'll be redirected to WhatsApp to discuss the details.`);
+        }
+
+        // Initialize clients slider
+        function initClientsSlider() {
+            const clientsSlider = document.getElementById('clientsSlider');
+            clientsSlider.style.animation = 'scrollClients 35s linear infinite';
+
+            // Add hover pause functionality
+            clientsSlider.addEventListener('mouseenter', function() {
+                clientsSlider.style.animationPlayState = 'paused';
+            });
+
+            clientsSlider.addEventListener('mouseleave', function() {
+                clientsSlider.style.animationPlayState = 'running';
+            });
+        }
+
+        // Initialize services slider (placeholder - no services slider exists)
+        function initServicesSlider() {
+            // No services slider element found in HTML, so this is just a placeholder
+            console.log('Services slider initialization skipped - no element found');
+        }
+
+        // Update display board on load
+        window.addEventListener('load', function() {
+            // Initialize audio track
+            updateTrack();
+
+            // Initialize clients slider
+            initClientsSlider();
+
+            // Initialize services slider
+            initServicesSlider();
+
+            // Add scroll effect to header
+            window.addEventListener('scroll', function() {
+                const header = document.getElementById('header');
+                if (window.scrollY > 100) {
+                    header.classList.add('shadow-lg');
+                } else {
+                    header.classList.remove('shadow-lg');
+                }
+            });
+
+            // Animate elements on scroll
+            const observerOptions = {
+                threshold: 0.1,
+                rootMargin: '0px 0px -50px 0px'
+            };
+
+            const observer = new IntersectionObserver(function(entries) {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('animate-fadeIn');
+                    }
+                });
+            }, observerOptions);
+
+            // Observe all section headings and cards
+            document.querySelectorAll('section, .radio-card').forEach(el => {
+                observer.observe(el);
+            });
+        });
+    </script>
+</body>
+</html>
